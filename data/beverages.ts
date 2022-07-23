@@ -8,6 +8,7 @@ const beverages: Record<string, Beverage> = {
   coke: {
     name: "Coca-Cola",
     id: "coke",
+    shortDescription: "The pride of Atlanta",
     description:
       "The classic, minus that one special ingredient they don't let you use anymore",
     imageUrl:
@@ -16,6 +17,7 @@ const beverages: Record<string, Beverage> = {
   dew: {
     name: "Mountain Dew",
     id: "dew",
+    shortDescription: "Fueling Kyles since 64",
     description: "Think you have what it takes to climb the mountain?",
     imageUrl:
       "https://media.officedepot.com/images/f_auto,q_auto,e_sharpen,h_450/products/122250/122250_p/122250",
@@ -23,6 +25,7 @@ const beverages: Record<string, Beverage> = {
   mst: {
     name: "Sierra Mist",
     id: "mst",
+    shortDescription: "Pepsi made us add it",
     description:
       "When you aren't allowed to have sprite because of a contract with Pepsi",
     imageUrl:
@@ -31,6 +34,7 @@ const beverages: Record<string, Beverage> = {
   drpep: {
     name: "Dr. Pepper",
     id: "drpep",
+    shortDescription: "When you get some Coke in your Root Beer",
     description: "The absolute goat, no debate",
     imageUrl:
       "https://dam.keurig.com/content/dam/cold-beverage-brands/brands/dr_pepper/product_images/dpregular/cans/12oz/png/DP_Regular_12oz_Can_Wet.png",
@@ -40,9 +44,13 @@ const beverages: Record<string, Beverage> = {
 export const getAllBeverageSummaries = (): Promise<BeverageSummary[]> => {
   return new Promise((resolve) =>
     resolve(
-      Object.values(beverages).map(({ name, id }) => ({
+      Object.values(beverages).map((
+        { name, id, imageUrl, shortDescription },
+      ) => ({
         name,
         id,
+        imageUrl,
+        shortDescription,
       })) as BeverageSummary[],
     )
   );

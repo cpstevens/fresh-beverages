@@ -6,6 +6,7 @@ import { tw } from "@twind";
 import { Handlers, PageProps } from "$fresh/server.ts";
 import { BeverageSummary } from "../types/Beverages.ts";
 import { getAllBeverageSummaries } from "../data/beverages.ts";
+import Carousel from "../islands/Carousel.tsx";
 
 export const handler: Handlers<BeverageSummary[] | null> = {
   async GET(_, ctx) {
@@ -26,17 +27,28 @@ const BeveragesRoute = ({ data }: PageProps<BeverageSummary[] | null>) => {
         Beverages
       </h1>
       <h2 class={tw`text-xl`}>Click on a beverage to see its details</h2>
-      <nav class={tw`my-3`}>
-        {data.map(({ id, name }) => (
-          <a
-            href={`/beverages/${id}`}
-            class={tw
-              ` w-full p-2 bg-blue-700 text-white hover:text-gray-800 hover:bg-gray-100 font-semibold visited:text-gray-200 `}
-          >
-            {name}
-          </a>
-        ))}
-      </nav>
+      <div class={tw`flex flex-col content-center items-center gap-4`}>
+        <nav class={tw`my-3`}>
+          {data.map(({ id, name }) => (
+            <a
+              href={`/beverages/${id}`}
+              class={tw
+                ` w-full p-2 bg-blue-700 text-white hover:text-gray-800 hover:bg-gray-100 font-semibold visited:text-gray-200 `}
+            >
+              {name}
+            </a>
+          ))}
+        </nav>
+        <Carousel
+          items={data.map(({ imageUrl, id, shortDescription }) => {
+            return {
+              imageUrl,
+              href: `/beverages/${id}`,
+              copy: shortDescription,
+            };
+          })}
+        />
+      </div>
     </div>
   );
 };
