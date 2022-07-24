@@ -2,10 +2,11 @@
 import { h } from "preact";
 import { tw } from "@twind";
 import Counter from "../islands/Counter.tsx";
+import { PageWrapper } from "../components/PageWrapper.tsx";
 
 export default function Home() {
   return (
-    <div class={tw`p-4 mx-auto max-w-screen-md`}>
+    <PageWrapper>
       <img
         src="/logo.svg"
         height="100px"
@@ -33,6 +34,6 @@ export default function Home() {
         Islands Example. Coming Soon to Beverages!
       </h2>
       <Counter start={3} />
-    </div>
+    </PageWrapper>
   );
 }
