@@ -17,8 +17,10 @@ const BeverageCarousel = ({ beverages }: BeverageCarouselProps) => {
 
   const getBeverageTextStyle = (index: number) => {
     return index === currentItemIndex
-      ? tw`bg-gray-800 text-yellow-300 hover:(text-gray-800 bg-yellow-300)`
-      : tw`text-gray-800 bg-yellow-300 hover:(bg-gray-800 text-yellow-300)`;
+      ? tw
+        `bg-gray-800 text-yellow-300 hover:(text-gray-800 bg-yellow-300) focus:(bg-gray-800 text-yellow-300)`
+      : tw
+        `text-gray-800 bg-yellow-300 hover:(bg-gray-800 text-yellow-300) focus:(bg-gray-800 text-yellow-300)`;
   };
 
   const previousSlide = () =>
@@ -41,7 +43,7 @@ const BeverageCarousel = ({ beverages }: BeverageCarouselProps) => {
         {beverages.map(({ id, name }, index) => (
           <button
             href={`/beverages/${id}`}
-            class={tw`p-2 font-semibold ${getBeverageTextStyle(index)}`}
+            class={tw`p-2 font-semibold ${getBeverageTextStyle(index)} `}
             onClick={() => setCurrentItemIndex(index)}
           >
             {name}
