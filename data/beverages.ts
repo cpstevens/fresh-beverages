@@ -2,7 +2,7 @@ import {
   Beverage,
   BeverageDetails,
   BeverageSummary,
-} from "../types/Beverages.ts";
+} from "../types/beverages.ts";
 
 const beverages: Record<string, Beverage> = {
   coke: {

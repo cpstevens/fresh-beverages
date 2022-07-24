@@ -3,7 +3,7 @@ import { h } from "preact";
 import { useState } from "preact/hooks";
 import { IS_BROWSER } from "$fresh/runtime.ts";
 import { tw } from "@twind";
-import { BeverageSummary } from "../types/Beverages.ts";
+import { BeverageSummary } from "../types/beverages.ts";
 
 interface BeverageCarouselProps {
   beverages: BeverageSummary[];

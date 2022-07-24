@@ -3,7 +3,7 @@ import { h } from "preact";
 import { tw } from "@twind";
 import { Handlers, PageProps } from "$fresh/server.ts";
 import { getBeverageDescriptionById } from "../../data/beverages.ts";
-import { BeverageDetails } from "../../types/Beverages.ts";
+import { BeverageDetails } from "../../types/beverages.ts";
 import { PageWrapper } from "../../components/PageWrapper.tsx";
 
 export const handler: Handlers<BeverageDetails | null> = {

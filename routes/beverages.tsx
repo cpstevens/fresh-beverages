@@ -5,7 +5,7 @@ import { h } from "preact";
 import { tw } from "@twind";
 import { Handlers, PageProps } from "$fresh/server.ts";
 
-import { BeverageSummary } from "../types/Beverages.ts";
+import { BeverageSummary } from "../types/beverages.ts";
 import { getAllBeverageSummaries } from "../data/beverages.ts";
 import { PageWrapper } from "../components/PageWrapper.tsx";
 import BeverageCarousel from "../islands/BeverageCarousel.tsx";
