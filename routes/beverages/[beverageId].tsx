@@ -1,6 +1,3 @@
-/** @jsx h */
-import { h } from "preact";
-import { tw } from "@twind";
 import { Handlers, PageProps } from "$fresh/server.ts";
 import { getBeverageDescriptionById } from "../../data/beverages.ts";
 import { BeverageDetails } from "../../types/beverages.ts";
@@ -27,23 +24,23 @@ const BeveragePage = ({ data }: PageProps<BeverageDetails | null>) => {
   return (
     <PageWrapper>
       <div
-        class={tw`flex flex-row justify-center items-center gap-2 p-4`}
+        class="flex flex-row justify-center items-center gap-2 p-4"
       >
-        <div class={tw`h-64`}>
+        <div class="h-64">
           <img
-            class={tw`w-full h-full`}
+            class="w-full h-full"
             src={imageUrl}
             alt={`Image of ${name}`}
           />
         </div>
-        <div class={tw`flex flex-col justify-start items-start gap-1`}>
-          <h1 class={tw`text-2xl font-extrabold`}>
+        <div class="flex flex-col justify-start items-start gap-1">
+          <h1 class="text-2xl font-extrabold">
             {name}
           </h1>
-          <p class={tw`text-xl my-2 font-semibold text-gray-600`}>
+          <p class="text-xl my-2 font-semibold text-gray-600">
             {description}
           </p>
-          <a href="/beverages" class={tw`text-lg`}>Back to Homepage</a>
+          <a href="/beverages" class="text-lg">Back to Homepage</a>
         </div>
       </div>
     </PageWrapper>

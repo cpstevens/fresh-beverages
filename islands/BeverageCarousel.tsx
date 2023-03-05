@@ -1,8 +1,6 @@
-/** @jsx h */
-import { h } from "preact";
 import { useState } from "preact/hooks";
 import { IS_BROWSER } from "$fresh/runtime.ts";
-import { tw } from "@twind";
+import { tw } from "twind";
 import { BeverageSummary } from "../types/beverages.ts";
 
 interface BeverageCarouselProps {
@@ -38,8 +36,8 @@ const BeverageCarousel = ({ beverages }: BeverageCarouselProps) => {
     );
 
   return (
-    <div class={tw`flex flex-col content-center items-center gap-4`}>
-      <nav class={tw`my-3`}>
+    <div class="flex flex-col content-center items-center gap-4">
+      <nav class="my-3">
         {beverages.map(({ id, name }, index) => (
           <button
             href={`/beverages/${id}`}
@@ -50,7 +48,7 @@ const BeverageCarousel = ({ beverages }: BeverageCarouselProps) => {
           </button>
         ))}
       </nav>
-      <div class={tw`w-3/4 mx-auto flex flex-row justify-between items-center`}>
+      <div class="w-3/4 mx-auto flex flex-row justify-between items-center">
         <button
           class={buttonClass}
           onClick={previousSlide}
@@ -59,19 +57,19 @@ const BeverageCarousel = ({ beverages }: BeverageCarouselProps) => {
           {"<"}
         </button>
         <div
-          class={tw`flex flex-col justify-center items-center gap-1 w-full `}
+          class="flex flex-col justify-center items-center gap-1 w-full "
         >
           <a
             href={`/beverages/${beverages[currentItemIndex].id}`}
-            class={tw`h-64`}
+            class="h-64"
           >
             <img
-              class={tw`w-full h-full`}
+              class="w-full h-full"
               src={beverages[currentItemIndex].imageUrl}
               alt={beverages[currentItemIndex].shortDescription}
             />
           </a>
-          <p class={tw`text-lg font-bold text-gray-700`}>
+          <p class="text-lg font-bold text-gray-700">
             {beverages[currentItemIndex].shortDescription}
           </p>
         </div>

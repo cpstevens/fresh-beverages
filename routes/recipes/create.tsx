@@ -1,10 +1,16 @@
-/** @jsx h */
-import { h } from "preact";
-import { tw } from "@twind";
+import { tw } from "twind";
 import { Handlers, PageProps } from "$fresh/server.ts";
 
 import { PageWrapper } from "../../components/PageWrapper.tsx";
 import { db } from "../../data/supabaseClient.ts";
+
+const supportedImageTypes = new Set<string>([
+  "image/jpeg",
+  "image/png",
+  "image/gif",
+  "image/jpg",
+  "image/webp",
+]);
 
 export const handler: Handlers<boolean> = {
   async POST(req, ctx) {
@@ -13,6 +19,28 @@ export const handler: Handlers<boolean> = {
     const description = data.get("description");
     const recipeUrl = data.get("recipeUrl");
     const imageUrl = data.get("imageUrl");
+
+    // @todo parallelize these
+    const imageValidation = await fetch(new URL(imageUrl!.toString()));
+    const recipeValidation = await fetch(new URL(recipeUrl!.toString()));
+
+    if (recipeValidation.status !== 200) {
+      return new Response("Recipe URL invalid", { status: 400 });
+    }
+
+    if (imageValidation.status !== 200) {
+      return new Response("Image URL invalid", { status: 400 });
+    }
+
+    if (
+      !supportedImageTypes.has(
+        imageValidation.headers.get("content-type") ?? "",
+      )
+    ) {
+      return new Response("Image URL did not report proper image type", {
+        status: 400,
+      });
+    }
 
     // @TODO Add Validation
     const insertData = {
@@ -35,11 +63,11 @@ const CreateRecipePage = ({}: PageProps) => {
   const inputClass = tw`border(1 gray-800)`;
   return (
     <PageWrapper>
-      <h1 class={tw`text(2xl gray-800) my-3`}>
+      <h1 class="text(2xl gray-800) my-3">
         Create Recipe
       </h1>
       <form
-        class={tw`flex flex-col items-start content-start gap-4`}
+        class="flex flex-col items-start content-start gap-4"
         method="POST"
       >
         <label class={labelClass}>
@@ -66,8 +94,7 @@ const CreateRecipePage = ({}: PageProps) => {
           <input required class={inputClass} type="url" name="imageUrl" />
         </label>
         <button
-          class={tw
-            `w-full p-2 bg-yellow-300 text-gray-800 text-xl font-bold hover:(bg-black text-yellow-300)`}
+          class="w-full p-2 bg-yellow-300 text-gray-800 text-xl font-bold hover:(bg-black text-yellow-300)"
           type="submit"
         >
           Create

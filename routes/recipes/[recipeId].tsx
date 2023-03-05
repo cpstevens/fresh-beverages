@@ -1,6 +1,3 @@
-/** @jsx h */
-import { h } from "preact";
-import { tw } from "@twind";
 import { Handlers, PageProps } from "$fresh/server.ts";
 
 import { PageWrapper } from "../../components/PageWrapper.tsx";
@@ -33,26 +30,26 @@ const BeveragePage = ({ data }: PageProps<Recipe | null>) => {
   return (
     <PageWrapper>
       <div
-        class={tw`flex flex-row justify-center items-center gap-8 p-4`}
+        class="flex flex-row justify-center items-center gap-8 p-4"
       >
-        <div class={tw`h-64`}>
+        <div class="h-64">
           <img
-            class={tw`w-full h-full`}
+            class="w-full h-full"
             src={imageUrl}
             alt={`Image of ${name}`}
           />
         </div>
-        <div class={tw`flex flex-col justify-start items-start gap-1`}>
-          <h1 class={tw`text-2xl font-bold`}>
+        <div class="flex flex-col justify-start items-start gap-1">
+          <h1 class="text-2xl font-bold">
             {name}
           </h1>
-          <p class={tw`text-xl my-2 font-semibold text-gray-600`}>
+          <p class="text-xl my-2 font-semibold text-gray-600">
             {description}
           </p>
-          <a href={recipeUrl} target="_blank" class={tw`text-lg`}>
+          <a href={recipeUrl} target="_blank" class="text-lg">
             Full Recipe
           </a>
-          <a href="/recipes" class={tw`text-lg`}>Back to Recipes Page</a>
+          <a href="/recipes" class="text-lg">Back to Recipes Page</a>
         </div>
       </div>
     </PageWrapper>

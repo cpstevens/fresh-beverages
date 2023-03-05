@@ -1,6 +1,3 @@
-/** @jsx h */
-import { h } from "preact";
-import { tw } from "@twind";
 import Counter from "../islands/Counter.tsx";
 import { PageWrapper } from "../components/PageWrapper.tsx";
 
@@ -12,25 +9,24 @@ export default function Home() {
         height="100px"
         alt="the fresh logo: a sliced lemon dripping with juice"
       />
-      <h1 class={tw`text-2xl font-bold`}>Fresh Beverages</h1>
-      <p class={tw`my-6`}>
+      <h1 class="text-2xl font-bold">Fresh Beverages</h1>
+      <p class="my-6">
         This site is made with `fresh` and contains some of the freshest
         beverages you'll find on the market!
       </p>
       <div
-        class={tw`my-6`}
+        class="my-6"
       >
         Want to see some "fresh" beverages? Click{" "}
         <a
-          class={tw
-            `text-gray-700 hover:(text-blue-500) visited:(text-purple-700)`}
+          class="text-gray-700 hover:(text-blue-500) visited:(text-purple-700)"
           href="/beverages"
         >
           here
         </a>{" "}
         to get started
       </div>
-      <h2 class={tw`text(xl) my-2`}>
+      <h2 class="text(xl) my-2">
         Islands Example. Coming Soon to Beverages!
       </h2>
       <Counter start={3} />

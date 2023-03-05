@@ -1,8 +1,3 @@
-/** @jsx h */
-/** @type { import('twind').Configuration} */
-
-import { h } from "preact";
-import { tw } from "@twind";
 import { Handlers, PageProps } from "$fresh/server.ts";
 
 import { BeverageSummary } from "../types/beverages.ts";
@@ -25,10 +20,10 @@ const BeveragesRoute = ({ data }: PageProps<BeverageSummary[] | null>) => {
 
   return (
     <PageWrapper>
-      <h1 class={tw`text-2xl`}>
+      <h1 class="text-2xl">
         Beverages
       </h1>
-      <h2 class={tw`text-xl`}>Click on a beverage to see its details</h2>
+      <h2 class="text-xl">Click on a beverage to see its details</h2>
       <BeverageCarousel beverages={data} />
     </PageWrapper>
   );
